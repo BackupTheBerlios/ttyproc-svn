@@ -1,0 +1,125 @@
+.TH "ttyproc.h" 3 "20 Sep 2004" "Version 1.0.1" "lib ttyproc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ttyproc.h \- Include file for ttyproc library.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBserial_entry\fP"
+.br
+.RI "\fIAn entry representing one line from /proc/tty/driver/usbserial. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBserial_entry\fP \fBserialent_t\fP"
+.br
+.RI "\fIA type definition for \fBserial_entry\fP. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBttyproc_init\fP ()"
+.br
+.RI "\fIchecks proc is mounted, and performs various startup tasks \fP"
+.ti -1c
+.RI "int \fBttyproc_scanlist\fP ()"
+.br
+.RI "\fIfrees current node list and re-scans usbserial data. \fP"
+.ti -1c
+.RI "int \fBttyproc_getpath_node\fP (char *, \fBserialent_t\fP *)"
+.br
+.RI "\fIreturns a found node path given a node in the linked list \fP"
+.ti -1c
+.RI "int \fBttyproc_getpath_vpid\fP (char *, int, int, int)"
+.br
+.RI "\fIuse vendor and product ids to obtain a node path \fP"
+.ti -1c
+.RI "int \fBttyproc_getfd_node\fP (\fBserialent_t\fP *, u_int16_t)"
+.br
+.RI "\fIobtain a file descriptor from a passed node with open flags \fP"
+.ti -1c
+.RI "void \fBttyproc_close\fP ()"
+.br
+.RI "\fIfrees current node list, and performs various cleanup tasks \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBserialent_t\fP * \fBbegin\fP"
+.br
+.RI "\fIa pointer to beginning of list \fP"
+.ti -1c
+.RI "int \fBtotalents\fP"
+.br
+.RI "\fItotal \fBserial_entry\fP nodes \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Include file for ttyproc library. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "int ttyproc_getfd_node (\fBserialent_t\fP * node, u_int16_t flags)"
+.PP
+obtain a file descriptor from a passed node with open flags \fBParameters:\fP
+.RS 4
+\fInode\fP The node to be used for obtaining a file descriptor. 
+.br
+\fIflags\fP The flags that will be passed to open function call. 
+.RE
+.PP
+
+.SS "int ttyproc_getpath_node (char * dpath, \fBserialent_t\fP * node)"
+.PP
+returns a found node path given a node in the linked list \fBParameters:\fP
+.RS 4
+\fIdpath\fP The string to read device node path into. 
+.br
+\fInode\fP The node to be used when obtaining path.
+.RE
+.PP
+This should be used if parsing the linked list within a program. Using ttyproc_getpath_vpid can yield wierd results otherwise. 
+.SS "int ttyproc_getpath_vpid (char * dpath, int vid, int pid, int pnum)"
+.PP
+use vendor and product ids to obtain a node path \fBParameters:\fP
+.RS 4
+\fIdpath\fP The string to read device node path into. 
+.br
+\fIvid\fP The vendor identifier of the usb serial device. 
+.br
+\fIpid\fP The product identifier of the usb serial device. 
+.br
+\fIpnum\fP The port number identifier. Typically set to 1 with most devices. 
+.RE
+.PP
+
+.SS "int ttyproc_init ()"
+.PP
+checks proc is mounted, and performs various startup tasks This must be called first before doing anything else. 
+.SS "int ttyproc_scanlist ()"
+.PP
+frees current node list and re-scans usbserial data. In the future, this might scan serial data as well. 
+.SH "Variable Documentation"
+.PP 
+.SS "\fBserialent_t\fP * \fBbegin\fP"
+.PP
+a pointer to beginning of list This is a pointer used to assign the node used for parsing to a linked lists beginning.
+.PP
+Never try to assign this value - always use in assignment. 
+.SS "int \fBtotalents\fP"
+.PP
+total \fBserial_entry\fP nodes This is a global variable used to keep count of current nodes comprising the linked list. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lib ttyproc from the source code.

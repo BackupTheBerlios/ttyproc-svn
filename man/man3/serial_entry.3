@@ -1,0 +1,105 @@
+.TH "serial_entry" 3 "20 Sep 2004" "Version 1.0.1" "lib ttyproc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+serial_entry \- An entry representing one line from /proc/tty/driver/usbserial.  
+
+.PP
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ttyproc.h>\fP
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBminor\fP"
+.br
+.RI "\fIminor of device \fP"
+.ti -1c
+.RI "char \fBmodule\fP [15]"
+.br
+.RI "\fIusbserial module name \fP"
+.ti -1c
+.RI "char \fBdevname\fP [25]"
+.br
+.RI "\fIdevice name \fP"
+.ti -1c
+.RI "int \fBvid\fP"
+.br
+.RI "\fIvendor identifier \fP"
+.ti -1c
+.RI "int \fBpid\fP"
+.br
+.RI "\fIproduct identifier \fP"
+.ti -1c
+.RI "int \fBnumports\fP"
+.br
+.RI "\fItotal ports \fP"
+.ti -1c
+.RI "int \fBportid\fP"
+.br
+.RI "\fIport identifier \fP"
+.ti -1c
+.RI "int \fBnodeid\fP"
+.br
+.RI "\fInode identifier \fP"
+.ti -1c
+.RI "int \fBdevid\fP"
+.br
+.RI "\fInot implemented \fP"
+.ti -1c
+.RI "char \fBbuspath\fP [25]"
+.br
+.RI "\fIraw usb path \fP"
+.ti -1c
+.RI "\fBserial_entry\fP * \fBnext\fP"
+.br
+.RI "\fIpointer to next node \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An entry representing one line from /proc/tty/driver/usbserial. 
+
+This structure is used when creating a linked list from usbserial entries. 
+.PP
+.SH "Field Documentation"
+.PP 
+.SS "char \fBserial_entry::buspath\fP"
+.PP
+raw usb path This is the usb bus path in raw form. 
+.SS "int \fBserial_entry::devid\fP"
+.PP
+not implemented This will be used to differentiate like devices in the future. At the moment it will be set to 0. 
+.SS "char \fBserial_entry::devname\fP[25]"
+.PP
+device name This is the string obtained from usb descriptor iProduct. 
+.SS "int \fBserial_entry::minor\fP"
+.PP
+minor of device The USB serial core registers it's major number 188 with the kernel. The minor number can range from 0 to 255 for USB serial Adapters. This is used when finding device path. 
+.SS "char \fBserial_entry::module\fP[15]"
+.PP
+usbserial module name This is the short name a usbserial driver registers with the core. 
+.SS "struct \fBserial_entry\fP * \fBserial_entry::next\fP"
+.PP
+pointer to next node This is a pointer to the next node in the list, if not null. 
+.SS "int \fBserial_entry::nodeid\fP"
+.PP
+node identifier This is a number assigned to each node when the usbserial listing is scanned. This number can be used to differentiate like devices, although it is impossible to pinpoint which device is which when they are the same. Some clever hack will need to be thought up to handle this. 
+.SS "int \fBserial_entry::numports\fP"
+.PP
+total ports This is the number of ports a USB serial device has. 
+.SS "int \fBserial_entry::pid\fP"
+.PP
+product identifier This is a hex value representing the unique product identifier assigned to a usb device. 
+.SS "int \fBserial_entry::portid\fP"
+.PP
+port identifier This is the port number assigned to the interface. USB serial devices can sometimes have multiple ports. 
+.SS "int \fBserial_entry::vid\fP"
+.PP
+vendor identifier This is a hex value representing the unique vendor identifier assigned to a usb device. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lib ttyproc from the source code.

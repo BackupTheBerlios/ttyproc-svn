@@ -1,0 +1,29 @@
+INSTALLATION:
+
+	Please refer to the file 'INSTALL' for standard configuration 
+and installation instructions.
+
+To compile the test program:
+
+$ make test
+
+Now run it with a 4 digit vendor and product id to look for.
+
+$ ./test xxxx xxxx
+
+Make sure the device is connected (or not)
+
+DOCUMENTATION:
+
+	Doxygen generated documentation is available in the html folder.
+Please refer to the test program  within the library or content within
+'examples' as well.  A contrib folder will be set up should code be
+submitted to the project.  The man pages are very messy... I'm still
+experimenting with doxyfile settings.
+
+INFO/CONTACT
+
+	The project is being set up on http://www.berlios.de.
+ 
+	For all questions, comments, patches please mail me at:
+		lmendez19@austin.rr.com

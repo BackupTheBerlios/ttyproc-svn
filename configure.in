@@ -1,0 +1,23 @@
+# Based on configuration script used by gpsd
+
+AC_INIT
+
+AM_INIT_AUTOMAKE(ttyproc, 1.0.1)
+
+AC_PREFIX_PROGRAM(gcc)
+
+AM_CONFIG_HEADER(config.h)
+
+AC_LANG([C])
+
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_INSTALL
+AC_PROG_LIBTOOL
+
+#CFLAGS="$CFLAGS -Wall -Werror"
+CFLAGS="-Wall -Werror"
+
+AC_CHECK_HEADERS(string.h sys/stat.h errno.h dirent.h fcntl.h)
+
+AC_OUTPUT(Makefile)

@@ -1,0 +1,23 @@
+This is a list of items and ideas that might be useful to add.
+
+	Fix autogen script... too many irrelevant messages being generated, 
+find root cause.
+
+-Documentation
+	
+	Can not install xmlto (any) application.  I will write up 
+suitable documentation covering the current api once this has been 
+resolved.  (I need to upgrade docbook-xls and friends).
+
+-Callbacks
+	
+	Have a routine that watches for change in 
+/proc/tty/driver/usbserial which can then call data in a report to a function 
+specified by the programmer.  This will be handy for hotplugging, etc.
+
+-Misc.
+
+	Convert current node LIFO stack into a FIFO.  Add naming scheme 
+to beginning pointer, and a new or unified node list for 'serial' 
+information.  The current parser should be able to handle the 'serial' 
+proc information, as it is in the same format.

@@ -1,0 +1,39 @@
+.TH "pathdefs.h" 3 "20 Sep 2004" "Version 1.0.1" "lib ttyproc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pathdefs.h \- Contains prefixes and paths.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char * \fBdevpaths\fP []"
+.br
+.RI "\fIarray containing common device node prefixes \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contains prefixes and paths. 
+
+This is an include file containing common device node prefixes and paths.
+.SH "Variable Documentation"
+.PP 
+.SS "char \fBdevpaths\fP[]"
+.PP
+\fBInitial value:\fP.nf
+ {       
+         '/dev/ttyUSB',
+         '/dev/usb/tts/',
+         '/dev/tts/USB',
+         NULL
+}
+.fi
+array containing common device node prefixes 
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lib ttyproc from the source code.
